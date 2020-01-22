@@ -3,6 +3,7 @@
 	<persistence-unit name="atems">
 	
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	<class>br.edu.model.Jogo</class>
 	
 	<properties>
 			<property name="javax.persistence.jdbc.driver"
