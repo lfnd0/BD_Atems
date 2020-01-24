@@ -11,9 +11,10 @@
         <h1>Atems</h1>
         <a href="{% url 'home' %}">Home</a> |
             {% if user.is_authenticated %}
-                <a href="{% url 'distribuidoras' %}">Distribuidora(s)</a> |
-                <a href="{% url 'jogos' %}">Jogo(s)</a> |
+                <a href="{% url 'listar_distribuidoras' %}">Distribuidora(s)</a> |
+                <a href="{% url 'listar_jogos' %}">Jogo(s)</a> |
                 <a href="{% url 'logout' %}">Sair</a>
+                
             {% else %}
                 <a href="{% url 'signup' %}">Cadastrar</a> |
                 <a href="{% url 'login' %}">Entrar</a>
