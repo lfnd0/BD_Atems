@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 class Local(models.Model):
     nome = models.CharField(max_length=100)
@@ -11,8 +12,8 @@ class Local(models.Model):
         return self.nome
 
 class Distribuidora(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='distribuidoras')
     nome = models.CharField(max_length=100)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     local = models.ManyToManyField(Local)
     
     def __str__(self):
@@ -37,12 +38,12 @@ class ClassificacaoIndicativa(models.Model):
         return self.nome
 
 class Jogo(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     data_lancamento = models.DateField()
-    distribuidora = models.OneToOneField(Distribuidora, on_delete=models.CASCADE)
-    genero = models.OneToOneField(Genero, on_delete=models.CASCADE)
-    classificacao_indicativa = models.OneToOneField(ClassificacaoIndicativa, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    distribuidora = models.ForeignKey(Distribuidora, on_delete=models.CASCADE)
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
+    classificacao_indicativa = models.ForeignKey(ClassificacaoIndicativa, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
