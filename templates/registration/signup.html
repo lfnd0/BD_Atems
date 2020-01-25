@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Cadastrar-se no Atems</h2>
+    <h2>Se cadastrar no Atems</h2>
     <form method="post" novalidate>
         {% csrf_token %}
         {{ form.as_p }}
