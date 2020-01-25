@@ -1,18 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h2>Jogo(s)</h2>
-<h3>Gratuitos:</h3>
+<h2>Jogos da distribuidora</h2>
+<h3>Jogos gratuitos</h3>
 <ul>
     {% for jogo_gratuito in jogos_gratuitos %}
-        <li>
-            {{ jogo_gratuito.nome }}
-            <button><a href="{% url 'atualizar_jogo_gratuito' jogo_gratuito.pk %}">Atualizar jogo gratuito</a></button>
-            <button><a href="{% url 'apagar_jogo_gratuito' jogo_gratuito.id %}">Apagar</a></button>
-        </li>
+        <li>{{ jogo_gratuito.nome }}</li>
         <ul>
-            <li>Distribuidora: {{ jogo_gratuito.distribuidora }}</li>
             <li>Gênero: {{ jogo_gratuito.genero }}</li>
             <li>Classificação indicativa: {{ jogo_gratuito.classificacao_indicativa }}</li>
         </ul>
@@ -20,16 +14,11 @@
             <p>Você não possui jogos gratuitos cadastrados.</p>
     {% endfor %}
 </ul>
-<h3>Pagos:</h3>
+<h3>Jogos pagos</h3>
 <ul>
     {% for jogo_pago in jogos_pagos %}
-        <li>
-            {{ jogo_pago.nome }}
-            <button><a href="{% url 'atualizar_jogo_pago' jogo_pago.pk %}">Atualizar jogo pago</a></button>
-            <button><a href="{% url 'apagar_jogo_pago' jogo_pago.id %}">Apagar</a></button>
-        </li>
+        <li>{{ jogo_pago.nome }}</li>
         <ul>
-            <li>Distribuidora: {{ jogo_pago.distribuidora }}</li>
             <li>Gênero: {{ jogo_pago.genero }}</li>
             <li>Classificação indicativa: {{ jogo_pago.classificacao_indicativa }}</li>
             <li>Preço: {{ jogo_pago.preco }}</li>
