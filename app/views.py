@@ -95,7 +95,7 @@ def adicionar_jogo_gratuito(request, pk):
 class JogoGratuitoUpdateView(UpdateView):
     model = JogoGratuito
     fields = ['nome', 'distribuidora', 'genero', 'classificacao_indicativa']
-    template_name = 'atualizar_gratuito_form.html'
+    template_name = 'atualizar_jogo_gratuito_form.html'
 
     def get_success_url(self):
         return reverse('listar_jogos')
