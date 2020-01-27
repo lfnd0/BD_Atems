@@ -13,7 +13,9 @@
         {% empty %}
             <p>Você não possui jogos gratuitos cadastrados.</p>
     {% endfor %}
+    <button><a href="{% url 'adicionar_jogo_gratuito' %}">Adicionar jogo gratuito</a></button>
 </ul>
+
 <h3>Jogos pagos</h3>
 <ul>
     {% for jogo_pago in jogos_pagos %}
@@ -26,5 +28,6 @@
         {% empty %}
             <p>Você não possui jogos pagos cadastrados.</p>
     {% endfor %}
+    <button><a href="{% url 'adicionar_jogo_pago' %}">Adicionar jogo pago</a></button>
 </ul>
 {% endblock %}

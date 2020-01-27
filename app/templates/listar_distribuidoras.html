@@ -8,8 +8,8 @@
         <li>
             {{ distribuidora.nome }}
             <button><a href="{% url 'atualizar_distribuidora' distribuidora.id %}">Atualizar distribuidora</a></button>
-            <button><a href="{% url 'adicionar_jogo_gratuito' distribuidora.pk %}">Adicionar jogo gratuito</a></button>
-            <button><a href="{% url 'adicionar_jogo_pago' distribuidora.pk %}">Adicionar jogo pago</a></button>
+            <button><a href="{% url 'adicionar_jogo_gratuito' %}">Adicionar jogo gratuito</a></button>
+            <button><a href="{% url 'adicionar_jogo_pago' %}">Adicionar jogo pago</a></button>
             <button><a href="{% url 'listar_jogos_distribuidora' distribuidora.pk %}">Listar jogos</a></button>
             <button><a href="{% url 'apagar_distribuidora' distribuidora.id %}">Apagar</a></button>
         </li>
