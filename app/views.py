@@ -75,9 +75,9 @@ def listar_jogos(request):
     return render(request, 'listar_jogos.html', {'jogos_gratuitos': jogos_gratuitos, 'jogos_pagos': jogos_pagos })
 
 @login_required
-def adicionar_jogo_gratuito(request, pk):
+def adicionar_jogo_gratuito(request):
     usuario = request.user
-    distribuidora = get_object_or_404(Distribuidora, pk=pk)
+    distribuidora = get_object_or_404(Distribuidora, usuario__pk=usuario.id)
 
     if request.method == 'POST':
         form = JogoGratuitoForm(request.POST)
@@ -89,7 +89,24 @@ def adicionar_jogo_gratuito(request, pk):
             return redirect('listar_jogos_distribuidora', distribuidora.pk)
     else:
         form = JogoGratuitoForm()
-    return render(request, 'adicionar_jogo_gratuito.html', { 'distribuidora': distribuidora, 'form': form })
+    return render(request, 'adicionar_jogo_gratuito.html', { 'form': form })
+
+# @login_required
+# def adicionar_jogo_gratuito(request, pk):
+#     usuario = request.user
+#     distribuidora = get_object_or_404(Distribuidora, pk=pk)
+
+#     if request.method == 'POST':
+#         form = JogoGratuitoForm(request.POST)
+#         if form.is_valid():
+#             jogo_gratuito = form.save(commit=False)
+#             jogo_gratuito.usuario = usuario
+#             jogo_gratuito.distribuidora = distribuidora
+#             jogo_gratuito.save()
+#             return redirect('listar_jogos_distribuidora', distribuidora.pk)
+#     else:
+#         form = JogoGratuitoForm()
+#     return render(request, 'adicionar_jogo_gratuito.html', { 'distribuidora': distribuidora, 'form': form })
 
 @method_decorator([login_required], name='dispatch')
 class JogoGratuitoUpdateView(UpdateView):
@@ -109,10 +126,27 @@ class JogoPagoUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('listar_jogos')
 
+# @login_required
+# def adicionar_jogo_pago(request, pk):
+#     usuario = request.user
+#     distribuidora = get_object_or_404(Distribuidora, pk=pk)
+
+#     if request.method == 'POST':
+#         form = JogoPagoForm(request.POST)
+#         if form.is_valid():
+#             jogo_pago = form.save(commit=False)
+#             jogo_pago.usuario = usuario
+#             jogo_pago.distribuidora = distribuidora
+#             jogo_pago.save()
+#             return redirect('listar_jogos_distribuidora', distribuidora.pk)
+#     else:
+#         form = JogoPagoForm()
+#     return render(request, 'adicionar_jogo_pago.html', { 'distribuidora': distribuidora, 'form': form })
+
 @login_required
-def adicionar_jogo_pago(request, pk):
+def adicionar_jogo_pago(request):
     usuario = request.user
-    distribuidora = get_object_or_404(Distribuidora, pk=pk)
+    distribuidora = get_object_or_404(Distribuidora, usuario__pk=usuario.id)
 
     if request.method == 'POST':
         form = JogoPagoForm(request.POST)
@@ -123,8 +157,8 @@ def adicionar_jogo_pago(request, pk):
             jogo_pago.save()
             return redirect('listar_jogos_distribuidora', distribuidora.pk)
     else:
-        form = JogoPagoForm()
-    return render(request, 'adicionar_jogo_pago.html', { 'distribuidora': distribuidora, 'form': form })
+        form = JogoPagoForm
+    return render(request, 'adicionar_jogo_pago.html', { 'form': form })
 
 @login_required
 def apagar_jogo_gratuito(request, id):
