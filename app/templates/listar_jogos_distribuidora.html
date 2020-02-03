@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 
+{% block title %}Jogos da distribuidora{% endblock %}
 {% block content %}
-<h2>Jogos da distribuidora</h2>
-<h3>Jogos gratuitos</h3>
-<ul>
-    {% for jogo_gratuito in jogos_gratuitos %}
+<div class="container">
+    <h2>Jogos da distribuidora</h2>
+    <h3>Jogos gratuitos</h3>
+    <ul>
+        {% for jogo_gratuito in jogos_gratuitos %}
         <li>{{ jogo_gratuito.nome }}</li>
         <ul>
             <li>Gênero: {{ jogo_gratuito.genero }}</li>
             <li>Classificação indicativa: {{ jogo_gratuito.classificacao_indicativa }}</li>
         </ul>
         {% empty %}
-            <p>Você não possui jogos gratuitos cadastrados.</p>
-    {% endfor %}
-    <button><a href="{% url 'adicionar_jogo_gratuito' %}">Adicionar jogo gratuito</a></button>
-</ul>
+        <p>Você não possui jogos gratuitos cadastrados.</p>
+        {% endfor %}
+        <a href="{% url 'adicionar_jogo_gratuito' %}" class="btn btn-info">Adicionar jogo gratuito</a>
+    </ul>
 
-<h3>Jogos pagos</h3>
-<ul>
-    {% for jogo_pago in jogos_pagos %}
+    <h3>Jogos pagos</h3>
+    <ul>
+        {% for jogo_pago in jogos_pagos %}
         <li>{{ jogo_pago.nome }}</li>
         <ul>
             <li>Gênero: {{ jogo_pago.genero }}</li>
@@ -26,8 +28,9 @@
             <li>Preço: {{ jogo_pago.preco }}</li>
         </ul>
         {% empty %}
-            <p>Você não possui jogos pagos cadastrados.</p>
-    {% endfor %}
-    <button><a href="{% url 'adicionar_jogo_pago' %}">Adicionar jogo pago</a></button>
-</ul>
+        <p>Você não possui jogos pagos cadastrados.</p>
+        {% endfor %}
+        <a href="{% url 'adicionar_jogo_pago' %}" class="btn btn-info">Adicionar jogo pago</a>
+    </ul>
+</div>
 {% endblock %}

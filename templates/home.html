@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <p>Bem vindo(a) ao Atems {% if user.is_authenticated %}{{user.username}}{% else %}visitante{% endif %}!</p>
+<div class="container">
+    <h2>Home</h2>
+        <p>Bem vindo(a) ao Atems {% if user.is_authenticated %}{{user.username}}{% else %}visitante{% endif %}!</p>
+    </div>
+</div>
 
 {% endblock %}

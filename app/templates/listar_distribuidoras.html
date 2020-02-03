@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 
+{% block title %}Distribuidora{% endblock %}
 {% block content %}
-
-<h2>Distribuidora(s)</h2>
-<ul>
-    {% for distribuidora in distribuidoras %}
+<div class="container">
+    <h2>Distribuidora</h2>
+    <ul>
+        {% for distribuidora in distribuidoras %}
         <li>
             {{ distribuidora.nome }}
-            <button><a href="{% url 'atualizar_distribuidora' distribuidora.id %}">Atualizar distribuidora</a></button>
-            <button><a href="{% url 'adicionar_jogo_gratuito' %}">Adicionar jogo gratuito</a></button>
-            <button><a href="{% url 'adicionar_jogo_pago' %}">Adicionar jogo pago</a></button>
-            <button><a href="{% url 'listar_jogos_distribuidora' distribuidora.pk %}">Listar jogos</a></button>
-            <button><a href="{% url 'apagar_distribuidora' distribuidora.id %}">Apagar</a></button>
         </li>
-        
         <ul>
             {% for local in distribuidora.local.all %}
-                <li>{{ local }}</li>
+            <li>{{ local }}</li>
             {% endfor %}
         </ul>
+        <a href="{% url 'atualizar_distribuidora' distribuidora.id %}" class="btn btn-success">Atualizar distribuidora</a>
+        <a href="{% url 'adicionar_jogo_gratuito' %}" class="btn btn-info">Adicionar jogo gratuito</a>
+        <a href="{% url 'adicionar_jogo_pago' %}" class="btn btn-info">Adicionar jogo pago</a>
+        <a href="{% url 'listar_jogos_distribuidora' distribuidora.pk %}" class="btn btn-dark">Listar jogos</a>
+        <a href="{% url 'apagar_distribuidora' distribuidora.id %}" class="btn btn-danger">Apagar</a>
         {% empty %}
-            <p>Você não possui uma distribuidora de jogos cadastrada.</p>
-            <button><a href="{% url 'adicionar_distribuidora' %}">Adicionar distribuidora</a></button>
-    {% endfor %}
-</ul>
+        <p>Você não possui uma distribuidora de jogos cadastrada.</p>
+        <a href="{% url 'adicionar_distribuidora' %}" class="btn btn-primary btn-sm">Adicionar distribuidora</a>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
+{% block title %}Adicionar distribuidora{% endblock %}
 {% block content %}
-<h2>Adicionar distribuidora</h2>
-<form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Adicionar</button>
-</form>
+<div class="container">
+    <h2>Adicionar distribuidora</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
+    </form>
+</div>
 {% endblock %}
