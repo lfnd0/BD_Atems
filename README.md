@@ -31,3 +31,8 @@
     python manage.py runserver
 #### Distribuições Linux:
     python3.8 manage.py runserver
+
+## Equipe:
+ * Danillo Rodrigues
+ * João Marcos
+ * Luiz Fernando
